@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Github Beats",
+    "version": "1.0",
+    "permissions": ["tabs", "activeTab", "scripting"],
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/watch*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
