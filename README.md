@@ -70,8 +70,8 @@ echo "GITHUB_TOKEN=ghp_..." >> .env
 
 ## Notes
 ```
-# In my Ubuntu machine, i uses this project with virtual machine.
-# If this project not load in your PC, apply this code: 
+# On my Ubuntu machine, I use this project with a virtual environment.
+# If the project does not work on your system, try the following:
 
 cd github-beats
 
