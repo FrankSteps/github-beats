@@ -1,12 +1,30 @@
 {
-    "manifest_version": 3,
-    "name": "Github Beats",
-    "version": "1.0",
-    "permissions": ["tabs", "activeTab", "scripting"],
-    "content_scripts": [
-      {
-        "matches": ["*://www.youtube.com/watch*"],
-        "js": ["content.js"]
+  "manifest_version": 3.0,
+  "name": "Github Beats",
+  "version": "1.0",
+  "permissions": ["tabs", "activeTab", "scripting"],
+  "icons": {
+    "128": "icons/github-beats.png"
+  },
+  "action": {
+    "default_icon": {
+      "128": "icons/github-beats.png"
+    },
+    "default_title": "Github Beats"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/watch*"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "contato@franksteps.com.br",
+      "data_collection_permissions": {
+        "user_data": [],
+        "required": ["none"]
       }
-    ]
+    }
   }
+}
