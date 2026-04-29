@@ -2,7 +2,7 @@ function sendVideoInfo() {
     const title = document.querySelector("h1.title yt-formatted-string")?.innerText || document.title;
     const url = window.location.href;
   
-    fetch("http://localhost:8080/video", {
+    fetch("http://localhost:5000/video", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, url })
