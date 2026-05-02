@@ -2,7 +2,7 @@ function sendVideoInfo() {
     const title = document.querySelector("h1.title yt-formatted-string")?.innerText || document.title;
     const url = window.location.href;
   
-    fetch("http://localhost:5000/video", {
+    fetch("http://localhost:8080/video", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, url })
@@ -10,5 +10,5 @@ function sendVideoInfo() {
   }
   
   // Envia a cada 5 segundos
-  setInterval(sendVideoInfo, 5000);
+  setInterval(sendVideoInfo, 8080);
   
