@@ -1,6 +1,6 @@
 # Developed by:  Francisco Passos :: Frank Steps
 # Developed on:  09/09/2025
-# Modified on:   03/30/2026
+# Modified on:   09/13/2026
 
 
 # import libraries to this server 
@@ -9,7 +9,7 @@ import logging
 import json
 import os
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 
@@ -31,6 +31,13 @@ logging.info("Token loaded successfully!")
 # Initializing flask app
 app = Flask(__name__)
 CORS(app)  
+
+
+
+
+# Global variable to store current video title
+current_title = ""
+current_url = ""
 
 
 
@@ -67,9 +74,13 @@ def update_github_status(title):
 # Endpoint to receive video info from browser extension
 @app.route("/video", methods=["POST"])
 def video():
+    global current_title, current_url
     data = request.json
     title = data.get("title")
     url = data.get("url")
+
+    current_title = title
+    current_url = url
 
     # Debug output in terminal
     print(f"Current video: {title}")
@@ -79,6 +90,18 @@ def video():
     # Update GitHub status with the video title
     update_github_status(title)
     return "OK", 200
+
+
+
+
+# Endpoint to get current video title (para seu C++)
+@app.route("/current", methods=["GET"])
+def get_current_video():
+    global current_title, current_url
+    return jsonify({
+        "title": current_title,
+        "url": current_url
+    }), 200
 
 
 
